@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json.schemastore.org/nest-cli",
+  "collection": "@nestjs/schematics",
+  "sourceRoot": "apps/telegram-bot-updated/src",
+  "monorepo": true,
+  "root": "apps/telegram-bot-updated",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/telegram-bot-updated/tsconfig.app.json"
+  },
+  "projects": {
+    "telegram-bot-updated": {
+      "type": "application",
+      "root": "apps/telegram-bot-updated",
+      "entryFile": "main",
+      "sourceRoot": "apps/telegram-bot-updated/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/telegram-bot-updated/tsconfig.app.json"
+      }
+    },
+    "api": {
+      "type": "application",
+      "root": "apps/api",
+      "entryFile": "main",
+      "sourceRoot": "apps/api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api/tsconfig.app.json"
+      }
+    }
+  }
+}
