@@ -27,8 +27,11 @@
     "db:migrate": "npm run build && npm run typeorm migration:run -- -d ./dist/ormconfig.js"
   },
   "dependencies": {
+    "@grpc/grpc-js": "^1.8.12",
     "@nestjs/common": "^9.0.0",
+    "@nestjs/config": "^2.3.1",
     "@nestjs/core": "^9.0.0",
+    "@nestjs/microservices": "^9.3.9",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.1",
     "concurrently": "^7.6.0",

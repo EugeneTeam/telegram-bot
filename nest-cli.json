@@ -6,7 +6,13 @@
   "root": "apps/telegram-bot-updated",
   "compilerOptions": {
     "webpack": true,
-    "tsConfigPath": "apps/telegram-bot-updated/tsconfig.app.json"
+    "tsConfigPath": "apps/telegram-bot-updated/tsconfig.app.json",
+    "assets": [
+      {
+        "include": "**/*.proto",
+        "watchAssets": true
+      }
+    ]
   },
   "projects": {
     "telegram-bot-updated": {
