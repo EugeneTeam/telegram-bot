@@ -7,7 +7,7 @@
   "license": "UNLICENSED",
   "scripts": {
     "prebuild": "rimraf dist",
-    "build": "nest build",
+    "build": "nest build && tsc -p tsconfig.build.json",
     "format": "prettier --write \"apps/**/*.ts\" \"libs/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
@@ -18,15 +18,25 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --config ./apps/telegram-bot-updated/test/jest-e2e.json"
+    "test:e2e": "jest --config ./apps/telegram-bot-updated/test/jest-e2e.json",
+    "start:api": "nest start api --watch",
+    "start:bot": "nest start telegram-bot-updated --watch",
+    "start:all": "concurrently \"npm run start:api\" \"npm run start:bot\"",
+    "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
+    "migration:create": "npm run typeorm -- migration:create ./migrations/new-migration",
+    "db:migrate": "npm run build && npm run typeorm migration:run -- -d ./dist/ormconfig.js"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
     "@nestjs/core": "^9.0.0",
     "@nestjs/platform-express": "^9.0.0",
+    "@nestjs/typeorm": "^9.0.1",
+    "concurrently": "^7.6.0",
+    "pg": "^8.10.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "rxjs": "^7.2.0"
+    "rxjs": "^7.2.0",
+    "typeorm": "^0.3.11"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
