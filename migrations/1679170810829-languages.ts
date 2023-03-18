@@ -7,7 +7,7 @@ export class languages1679170810829 implements MigrationInterface {
         name: 'languages',
         columns: [
           {
-            name: 'uui',
+            name: 'uuid',
             isPrimary: true,
             isUnique: true,
             isGenerated: true,

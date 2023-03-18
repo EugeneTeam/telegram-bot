@@ -15,7 +15,7 @@ export class translations1679172529744 implements MigrationInterface {
           },
           {
             name: 'languages_translations_languages_uuid_fkey',
-            columnNames: ['languages_uuid'],
+            columnNames: ['language_uuid'],
             referencedTableName: 'languages',
             referencedColumnNames: ['uuid'],
           },

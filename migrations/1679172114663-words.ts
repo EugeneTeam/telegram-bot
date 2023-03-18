@@ -15,7 +15,7 @@ export class words1679171992351 implements MigrationInterface {
           },
           {
             name: 'languages_words_languages_uuid_fkey',
-            columnNames: ['languages_uuid'],
+            columnNames: ['language_uuid'],
             referencedTableName: 'languages',
             referencedColumnNames: ['uuid'],
           },
@@ -23,12 +23,12 @@ export class words1679171992351 implements MigrationInterface {
             name: 'statistics_words_statistic_uuid_fkey',
             columnNames: ['statistic_uuid'],
             referencedTableName: 'statistics',
-            referencedColumnNames: ['uuid'],
+            referencedColumnNames: ['user_uuid'],
           },
         ],
         columns: [
           {
-            name: 'uui',
+            name: 'uuid',
             isPrimary: true,
             isUnique: true,
             isGenerated: true,
