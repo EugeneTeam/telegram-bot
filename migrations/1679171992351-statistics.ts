@@ -5,33 +5,6 @@ export class words1679171992351 implements MigrationInterface {
     await queryRunner.createTable(
       new Table({
         name: 'statistics',
-        foreignKeys: [
-          {
-            name: 'users_statistics_user_uuid_fkey',
-            columnNames: ['user_uuid'],
-            referencedTableName: 'users',
-            referencedColumnNames: ['uuid'],
-            onDelete: 'CASCADE',
-          },
-          {
-            name: 'languages_statistics_dlfnw_fkey',
-            columnNames: ['dlfnw'],
-            referencedTableName: 'languages',
-            referencedColumnNames: ['uuid'],
-          },
-          {
-            name: 'languages_statistics_dlfnt_fkey',
-            columnNames: ['dlfnt'],
-            referencedTableName: 'languages',
-            referencedColumnNames: ['uuid'],
-          },
-          {
-            name: 'languages_statistics_ui_language_fkey',
-            columnNames: ['ui_language'],
-            referencedTableName: 'languages',
-            referencedColumnNames: ['uuid'],
-          },
-        ],
         columns: [
           {
             name: 'user_uuid',
@@ -40,18 +13,19 @@ export class words1679171992351 implements MigrationInterface {
             type: 'uuid',
           },
           {
-            comment: 'default language for new translate',
-            name: 'dlfnw',
-            type: 'uuid',
+            name: 'number_of_displays',
+            type: 'int',
+            default: 0,
           },
           {
-            comment: 'default language for new translate',
-            name: 'dlfnt',
-            type: 'uuid',
+            name: 'translated_correctly',
+            type: 'int',
+            default: 0,
           },
           {
-            name: 'ui_language',
-            type: 'uuid',
+            name: 'translated_wrong',
+            type: 'int',
+            default: 0,
           },
         ],
       }),
