@@ -1,28 +1,22 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export class words1679171992351 implements MigrationInterface {
+export class translations1679172529744 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'words',
+        name: 'translations',
         foreignKeys: [
           {
-            name: 'users_words_user_uuid_fkey',
-            columnNames: ['user_uuid'],
-            referencedTableName: 'users',
+            name: 'words_translations_word_uuid_fkey',
+            columnNames: ['word_uuid'],
+            referencedTableName: 'words',
             referencedColumnNames: ['uuid'],
             onDelete: 'CASCADE',
           },
           {
-            name: 'languages_words_languages_uuid_fkey',
+            name: 'languages_translations_languages_uuid_fkey',
             columnNames: ['languages_uuid'],
             referencedTableName: 'languages',
-            referencedColumnNames: ['uuid'],
-          },
-          {
-            name: 'statistics_words_statistic_uuid_fkey',
-            columnNames: ['statistic_uuid'],
-            referencedTableName: 'statistics',
             referencedColumnNames: ['uuid'],
           },
         ],
@@ -36,32 +30,22 @@ export class words1679171992351 implements MigrationInterface {
             type: 'uuid',
           },
           {
-            name: 'word',
+            name: 'translate',
             type: 'varchar',
           },
           {
-            name: 'note',
-            type: 'varchar',
-            isNullable: true,
-            default: null,
-          },
-          {
-            name: 'user_uuid',
+            name: 'word_uuid',
             type: 'uuid',
           },
           {
             name: 'language_uuid',
             type: 'uuid',
           },
-          {
-            name: 'statistic_uuid',
-            type: 'uuid',
-          },
         ],
         indices: [
           {
             isUnique: true,
-            columnNames: ['word', 'user_uuid'],
+            columnNames: ['translate', 'word_uuid'],
           },
         ],
       }),
@@ -69,6 +53,6 @@ export class words1679171992351 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('words');
+    await queryRunner.dropTable('translations');
   }
 }
